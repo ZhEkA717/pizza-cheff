@@ -1,0 +1,26 @@
+.ui-kit-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: var(--orange-87);
+  width: 100%;
+  color: var(--dark-brown);
+  font-family: "Arimo", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  transition: opacity .2s;
+
+  &_lg {
+    height: 62px;
+  }
+
+  &_md {
+    height: 52px;
+  }
+
+  &:hover {
+    opacity: .9;
+
+  }
+
+}

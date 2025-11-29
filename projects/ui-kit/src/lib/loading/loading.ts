@@ -1,16 +1,16 @@
-import {Component, computed, input, Input, ViewEncapsulation} from '@angular/core';
-import {NgClass, NgStyle} from '@angular/common';
+import {ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation} from '@angular/core';
+import {NgStyle} from '@angular/common';
 
 @Component({
   selector: 'lib-loading',
   imports: [
     NgStyle,
-    NgClass
   ],
   templateUrl: './loading.html',
   styleUrl: './loading.scss',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Loading {
   color = input('primary'); // Цвет спиннера

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NgClass, NgStyle} from '@angular/common';
 
 @Component({
@@ -9,7 +9,8 @@ import {NgClass, NgStyle} from '@angular/common';
   ],
   templateUrl: './skeleton.html',
   styleUrl: './skeleton.css',
-  standalone: true
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Skeleton {
   @Input() styleClass: string = '';
