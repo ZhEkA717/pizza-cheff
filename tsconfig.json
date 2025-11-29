@@ -27,7 +27,9 @@
       ],
       "@assets/*": [
         "src/assets/*"
-      ]
+      ],
+      "@ui-kit": ["./projects/ui-kit"],
+      "@ui-kit/*": ["./projects/ui-kit/*"]
     }
   },
   "angularCompilerOptions": {
@@ -43,6 +45,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ui-kit/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ui-kit/tsconfig.spec.json"
     }
   ]
 }
