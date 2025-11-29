@@ -126,8 +126,6 @@ html {
 
 /* 6. Глобальные настройки body */
 body {
-  min-height: 100vh;
-  line-height: 1.5;
   font-family: "Arimo", sans-serif; /* Если используешь Arimo */
   background: #fff;
   color: #000;

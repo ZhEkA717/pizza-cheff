@@ -1,19 +1,95 @@
 <div *transloco="let t; lang: 'ru'" class="landing">
- <h1>{{ t('Logo') }}</h1>
-  <p>
-    {{ t('Stop-thinking-description') }}
-  </p>
-  <lib-loading
-    [color]="'primary'"
-  ></lib-loading>
-</div>
 
+  <header class="header">
+    <div class="container">
+      <div class="header__logo">
+        <div class="header__logo__img">
+          <img src="assets/images/landing/pizza-logo.webp" alt="pizza-logo">
+        </div>
+        <a href="#" class="header__logo__title">{{ t('Logo') }}</a>
+      </div>
+      <nav class="header__nav">
+        <ul>
+          <li><a (click)="scroll(pizza)">{{ t('Pizzas') }}</a></li>
+          <li><a href="#">{{ t('Drinks') }}</a></li>
+          <li><a href="#">{{ t('Delivery-and-payment') }}</a></li>
+          <li><a href="#">{{ t('Contacts') }}</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<div style="width: 500px; height: 20px">
-  <lib-skeleton width="100%" height="100%" borderRadius="8px"></lib-skeleton>
-  <lib-button label="Выбрать пиццу"></lib-button>
-  <lib-input [(ngModel)]="value" placeholder="Ваше имя"></lib-input>
-  {{ value() }}
+  <div class="container">
+    <main>
+      <section class="advertisement">
+        <div class="advertisement__info">
+          <div class="advertisement__info__title">
+            <p>{{ t('The-most-delicious-pizza-in-the-world') }}</p>
+            <p>{{ t('Only-at-Pizza-Chef') }}</p>
+          </div>
+          <div class="advertisement__info__items">
+            <div class="advertisement__info__item">
+              <div class="img">
+                <img src="assets/images/landing/icon-ear.webp" alt="icon-ear">
+              </div>
+              <div class="info">
+                <div class="info__title">{{ t('The-best-dough') }}</div>
+                <div class="info__subtitle">{{ t('The-best-dough-subtitle') }}</div>
+              </div>
+            </div>
+            <div class="advertisement__info__item">
+              <div class="img">
+                <img src="assets/images/landing/icon-cap.webp" alt="icon-ear">
+              </div>
+              <div class="info">
+                <div class="info__title">{{ t('The-best-chefs') }}</div>
+                <div class="info__subtitle">{{ t('The-best-chefs-subtitle') }}</div>
+              </div>
+            </div>
+            <div class="advertisement__info__item">
+              <div class="img">
+                <img src="assets/images/landing/icon-okey.webp" alt="icon-ear">
+              </div>
+              <div class="info">
+                <div class="info__title">{{ t('Quality-assurance') }}</div>
+                <div class="info__subtitle">{{ t('Quality-assurance-subtitle') }}</div>
+              </div>
+            </div>
+            <div class="advertisement__info__item">
+              <div class="img">
+                <img src="assets/images/landing/icon-recipe.webp" alt="icon-ear">
+              </div>
+              <div class="info">
+                <div class="info__title">{{ t('Selected-recipes') }}</div>
+                <div class="info__subtitle">{{ t('Selected-recipes-subtitle') }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="advertisement__info__button">
+            <lib-button (onClick)="scroll(pizza)" size="lg" [label]="t('Select-pizza')"></lib-button>
+          </div>
+        </div>
+        <div class="advertisement__img">
+          <img src="assets/images/landing/pizza-big.webp" alt="pizza-big">
+        </div>
+      </section>
+      <section #pizza id="pizzas" class="select-pizzas">
+        <div class="select-pizzas__title">{{ t('Choose-your-favorite-pizza') }}</div>
+        <div class="select-pizzas__items">
+          @if (!skeleton()) {
+            @for (card of cards(); track card.img) {
+              <app-pizza-card [card]="card"></app-pizza-card>
+            }
+
+          } @else {
+            @for (item of [1, 2, 3, 4, 5, 6, 7, 8]; track item) {
+              <lib-skeleton width="284px" height="356px" borderRadius="8px"></lib-skeleton>
+            }
+          }
+        </div>
+      </section>
+    </main>
+  </div>
 </div>
 
 

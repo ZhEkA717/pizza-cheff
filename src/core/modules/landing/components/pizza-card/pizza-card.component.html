@@ -1,0 +1,12 @@
+@if (card(); as card) {
+  <div *transloco="let t; lang: 'ru'" class="pizza-card">
+    <div class="pizza-card__img">
+      <img [src]="card.img" alt="">
+    </div>
+    <div class="pizza-card__title">{{ card.title }}</div>
+    <div class="pizza-card__subtitle">{{ card.subtitle }}</div>
+    <div class="pizza-card__button">
+      <lib-button [label]="t('In-cart')"></lib-button>
+    </div>
+  </div>
+}

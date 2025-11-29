@@ -1,14 +1,144 @@
-h1 {
-  color: var(--bed-rest-orange);
-  font-family: "Arimo", sans-serif;
-  font-weight: 400;
+
+.container {
+  margin: auto;
+  max-width: 1200px;
 }
 
-p {
-  font-family: "Arimo", sans-serif;
-  font-weight: 400;
-  color: var(--gray-orange-77);
-  font-size: 12px;
-  width: 384px;
+.header {
+  width: 100%;
+  height: 102px;
+  box-shadow: 0 18px 40px -18px rgba(0,0,0,0.35);
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__title {
+      width: 84px;
+      font-family: "Arimo", sans-serif;
+      font-weight: 500;
+      color: var(--bed-rest-orange);
+      font-size: 22px;
+      letter-spacing: 2px;
+      line-height: 28px;
+    }
+  }
+
+  &__nav {
+    width: 790px;
+    ul {
+      display: flex;
+      gap: 52px;
+
+      a {
+        font-family: "Arimo", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--gray-orange-77);
+      }
+    }
+
+  }
 }
 
+.advertisement {
+  padding-top: 128px;
+  padding-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-family: "Arimo", sans-serif;
+      font-weight: 400;
+      font-size: 42px;
+      letter-spacing: 1.5px;
+
+      p:first-child {
+        color: var(--gray-orange-77);
+      }
+
+      p:last-child {
+        color: var(--bed-rest-orange);
+      }
+    }
+
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* две равные колонки */
+      gap: 38px;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .img {
+        min-width: 60px;
+        min-height: 60px;
+      }
+
+      .info {
+        width: 230px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        &__title {
+          color: var(--orange-60);
+        }
+
+        &__subtitle {
+          color: var(--gray-orange-77);
+          line-height: 16px;
+          letter-spacing: 0.7px;
+        }
+
+      }
+    }
+
+    &__button {
+      transform: translateY(14px);
+      width: 226px;
+      height: 62px;
+    }
+  }
+}
+.select-pizzas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding-top: 68px;
+
+  &__title {
+    font-family: "Arimo", sans-serif;
+    font-weight: 400;
+    font-size: 34px;
+    letter-spacing: 1px;
+    color: var(--gray-orange-67);
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* две равные колонки */
+    gap: 12px;
+  }
+}

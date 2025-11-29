@@ -1,0 +1,46 @@
+.pizza-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 284px;
+  height: 356px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 4px;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.06),   /* мягкая основная */
+    0 1px 3px rgba(0, 0, 0, 0.08);
+
+  &__img {
+    min-width: 214px;
+    min-height: 152px;
+
+    img {
+      min-width: 214px;
+      min-height: 152px;
+    }
+  }
+
+  &__title {
+    color: var(--dark-brown);
+    font-family: "Arimo", sans-serif;
+    font-weight: 400;
+  }
+
+  &__subtitle {
+    color: var(--dark-gray-60);
+    font-size: 14px;
+    font-family: "Arimo", sans-serif;
+    font-weight: 400;
+    width: 244px;
+    text-align: center;
+  }
+
+  &__button {
+    margin-top: auto;
+    width: 244px;
+    justify-self: flex-end;
+  }
+}
