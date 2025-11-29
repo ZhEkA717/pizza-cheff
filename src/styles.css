@@ -1,7 +1,5 @@
 :root {
-  --primary: #f7c278;
-  --secondary: #9d6a26;
-  --button: #f6af47;
+  --primary: #f5ae46;
   --white: #ffffff;
 
   --dark-gray-87: #020202;
@@ -18,6 +16,12 @@
   --orange-87: #f6af47;
   --orange-60: #f5ae46;
   --bed-rest-orange: #f7c278;
+
+  --black-opacity_04: #000A120A;
+  --white-opacity_60: #FFFFFF99;
+  --white-opacity_74: #FFFFFFBD;
+
+  --spinner-background-color: rgba(0, 0, 0, 0.2);
 }
 
 

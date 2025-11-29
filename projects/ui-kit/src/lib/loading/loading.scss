@@ -1,0 +1,43 @@
+
+@keyframes dash-expand {
+  0% {
+    stroke-dasharray: 50%, 310%;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 200%, 60%;
+    stroke-dashoffset: -180%;
+  }
+  100% {
+    stroke-dasharray: 50%, 310%;
+    stroke-dashoffset: -360%;
+  }
+}
+
+/* Вращение всей SVG */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin stroke($color) {
+  @if $color != 'multi' {
+    stroke: var(--#{""+$color}) !important;
+  }
+}
+$sproitUiColorsLoading: primary;
+
+.ui-kit-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @each $color in $sproitUiColorsLoading {
+    .ui-kit-loading-color-#{""+$color} {
+      transform-origin: 50% 50%;
+      @include stroke($color);
+    }
+  }
+}
+

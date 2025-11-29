@@ -1,0 +1,12 @@
+.spinner-wrap {
+  background-color: var(--spinner-background-color, var(--white-opacity_74));
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

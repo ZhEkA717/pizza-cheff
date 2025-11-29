@@ -1,0 +1,25 @@
+<div class="ui-kit-loading">
+  <svg
+    class="indeterminate"
+    [attr.width]="size()"
+    [attr.height]="size()"
+    [attr.viewBox]="'0 0 ' + size() + ' ' + size()"
+  >
+    <circle
+      class="progress-ring ui-kit-loading-color-{{ color() }}"
+      [attr.cx]="size() / 2"
+      [attr.cy]="size() / 2"
+      [attr.r]="radius()"
+      [attr.stroke]="color()"
+      [attr.stroke-width]="strokeWidth()"
+      fill="none"
+      [attr.stroke-dasharray]="'60% 300%'"
+      [attr.stroke-dashoffset]="0"
+      stroke-linecap="round"
+      [ngStyle]="{
+      animation:  'dash-expand ' + animationDuration() * 5 / 3 + 's ease-in-out infinite, spin ' + animationDuration() + 's linear infinite, custom-progress-spinner-color 6s ease-in-out infinite',
+    }"
+    ></circle>
+  </svg>
+</div>
+

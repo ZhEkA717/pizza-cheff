@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TranslocoDirective} from '@jsverse/transloco';
-import {UiKit} from '@ui-kit/src/lib/ui-kit';
+import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
+import {Loading} from '@ui-kit/src/lib/loading/loading';
+import {GlobalLoadingService} from '@ui-kit/src/lib/global-loading/global-loading.service';
 
 @Component({
   selector: 'app-landing',
   imports: [
     TranslocoDirective,
-    UiKit
+    Skeleton,
+    Loading,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
@@ -14,5 +17,11 @@ import {UiKit} from '@ui-kit/src/lib/ui-kit';
   standalone: true
 })
 export class LandingComponent {
+  constructor(private globalLoadingService: GlobalLoadingService) {
+    this.globalLoadingService.show('1');
 
+    setTimeout(() => {
+      this.globalLoadingService.hide('1');
+    }, 2000)
+  }
 }
