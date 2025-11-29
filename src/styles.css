@@ -19,3 +19,76 @@
   --orange-60: #f5ae46;
   --bed-rest-orange: #f7c278;
 }
+
+
+/* Arimo Regular */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arimo Italic */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Arimo Medium */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arimo Medium Italic */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Arimo SemiBold */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arimo SemiBold Italic */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Arimo Bold */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arimo Bold Italic */
+@font-face {
+  font-family: "Arimo";
+  src: url("/assets/fonts/Arimo/Arimo-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
