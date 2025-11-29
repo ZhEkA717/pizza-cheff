@@ -96,3 +96,72 @@
   font-style: italic;
   font-display: swap;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Убираем маргины у всех элементов */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Убираем подчеркивание ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 4. Сбрасываем outline: он будет по фокусу */
+:focus {
+  outline: none;
+}
+
+/* 5. Улучшаем рендеринг текста */
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Глобальные настройки body */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: "Arimo", sans-serif; /* Если используешь Arimo */
+  background: #fff;
+  color: #000;
+}
+
+/* 7. Изображения */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 8. Формы */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* 9. Удаляем дефолтные списки */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 10. Кнопки */
+button {
+  cursor: pointer;
+}
+

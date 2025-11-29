@@ -1,0 +1,10 @@
+<div class="ui-kit-input">
+  <input
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+  >
+</div>

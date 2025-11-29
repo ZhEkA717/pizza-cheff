@@ -1,0 +1,57 @@
+import {ChangeDetectionStrategy, Component, forwardRef, input} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+
+@Component({
+  selector: 'lib-input',
+  imports: [],
+  templateUrl: './input.html',
+  styleUrl: './input.scss',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => Input),
+      multi: true
+    }
+  ]
+})
+export class Input implements ControlValueAccessor {
+  placeholder = input<string>('');
+  type = input<string>('text');
+
+  value: string = '';
+  disabled = false;
+
+  private onChange = (value: any) => {
+  };
+  public onTouched = () => {
+  };
+
+  // Когда Angular записывает значение в компонент
+  writeValue(value: any): void {
+    this.value = value ?? '';
+  }
+
+  // Когда значение изменилось в UI
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  // Когда input потерял фокус
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  // Если форма делает input disabled
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  // При вводе текста
+  onInput(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.value = target.value;
+    this.onChange(this.value);
+  }
+}
