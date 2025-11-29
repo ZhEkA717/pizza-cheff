@@ -9,7 +9,31 @@
   "projects": {
     "pizza-cheff": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "standalone": true,
+          "skipImport": false,
+          "skipTests": true,
+          "style": "scss",
+          "type": "component"
+        },
+        "@schematics/angular:service": {
+          "type": "service",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "standalone": true,
+          "skipImport": false,
+          "skipTests": true,
+          "type": "directive"
+        },
+        "@schematics/angular:pipe": {
+          "standalone": true,
+          "skipImport": false,
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
