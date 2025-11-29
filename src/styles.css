@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #f7c278;
+  --secondary: #9d6a26;
+  --button: #f6af47;
+  --white: #ffffff;
+
+  --dark-gray-87: #020202;
+  --dark-gray-60: #181919;
+
+  --dark-brown: #352307;
+  --gray-brown: #9d6a26;
+
+  --gray-orange-87: #b48f5a;
+  --gray-orange-77: #b4905a;
+  --gray-orange-67: #b89665;
+  --gray-orange-57: #c6a676;
+
+  --orange-87: #f6af47;
+  --orange-60: #f5ae46;
+  --bed-rest-orange: #f7c278;
+}
