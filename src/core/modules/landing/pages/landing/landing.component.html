@@ -9,24 +9,32 @@
         <a href="#" class="header__logo__title">{{ t('Logo') }}</a>
       </div>
       <nav class="header__nav">
-        <ul>
-          <li><a (click)="scroll(pizza)">{{ t('Pizzas') }}</a></li>
-          <li><a href="#">{{ t('Drinks') }}</a></li>
-          <li><a (click)="scroll(placeOrder)">{{ t('Delivery-and-payment') }}</a></li>
-          <li><a href="#">{{ t('Contacts') }}</a></li>
-        </ul>
+        <div class="burger-menu">
+
+        </div>
+        <ng-container *ngTemplateOutlet="menuList"></ng-container>
+        <ng-template #menuList>
+          <ul>
+            <li><a (click)="scroll(pizza)">{{ t('Pizzas') }}</a></li>
+            <li><a href="#">{{ t('Drinks') }}</a></li>
+            <li><a (click)="scroll(placeOrder)">{{ t('Delivery-and-payment') }}</a></li>
+            <li><a href="#">{{ t('Contacts') }}</a></li>
+          </ul>
+        </ng-template>
       </nav>
     </div>
   </header>
 
   <main>
-
     <div class="container">
       <section class="advertisement">
         <div class="advertisement__info">
           <div class="advertisement__info__title">
             <p>{{ t('The-most-delicious-pizza-in-the-world') }}</p>
             <p>{{ t('Only-at-Pizza-Chef') }}</p>
+          </div>
+          <div class="advertisement__info__img">
+            <img src="assets/images/landing/pizza-big.webp" alt="pizza-big">
           </div>
           <div class="advertisement__info__items">
             <div class="advertisement__info__item">

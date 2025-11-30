@@ -10,6 +10,7 @@ import {PizzaCardComponent} from '@core/modules/landing/components/pizza-card/pi
 import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
 import {UiKitInput} from '@ui-kit/src/lib/input/input';
 import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
+import {NgTemplateOutlet} from '@angular/common';
 
 @Component({
   selector: 'app-landing',
@@ -22,6 +23,7 @@ import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
     UiKitInput,
     ReactiveFormsModule,
     ForbidDotDirective,
+    NgTemplateOutlet,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
