@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal} from '@angular/core';
-import {Translation, TranslocoDirective, TranslocoService} from '@jsverse/transloco';
+import {ChangeDetectionStrategy, Component, effect, ElementRef, inject, signal, viewChild} from '@angular/core';
+import {Translation, TranslocoDirective, TranslocoPipe, TranslocoService} from '@jsverse/transloco';
 import {GlobalLoadingService} from '@ui-kit/src/lib/global-loading/global-loading.service';
 import {Button} from '@ui-kit/src/lib/button/button';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -15,6 +15,9 @@ import {TuiDrawer, TuiInputRange, TuiTooltip} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {phoneValidator} from '@shared/validators/phoneValidator';
 import {JsonPipe} from '@angular/common';
+import lightGallery from 'lightgallery';
+import lgZoom from 'lightgallery/plugins/zoom';
+import {LightGallery} from 'lightgallery/lightgallery';
 
 @Component({
   selector: 'app-landing',
@@ -32,6 +35,7 @@ import {JsonPipe} from '@angular/common';
     TuiInputRange,
     JsonPipe,
     TuiTooltip,
+    TranslocoPipe,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
@@ -45,13 +49,14 @@ export class LandingComponent {
 
   protected readonly open = signal(false);
   cards = signal<PizzaCard[] | null>(null);
-  private cdr = inject(ChangeDetectorRef);
   skeleton = signal(false);
   form: PlaceOrderForm = new FormGroup({
     name: new FormControl<string | null>(null, Validators.required),
     address: new FormControl<string | null>(null, [Validators.required]),
     phone: new FormControl<string | null>(null, [Validators.required, phoneValidator('BY')])
   })
+  private lgInstance: LightGallery | null = null;
+  private galleryContainer = viewChild<ElementRef<HTMLDivElement>>('lightgalleryContainer');
 
   constructor() {
     this.translocoService.selectTranslation().pipe(
@@ -60,7 +65,29 @@ export class LandingComponent {
     ).subscribe(cards => {
       this.cards.set(cards);
     })
+    effect(() => {
+      const galleryEl = this.galleryContainer()?.nativeElement;
+      // Если карточки загружены и галерея еще не создана
+      if (galleryEl && this.cards() && !this.lgInstance) {
+        // Даем Angular один тик на отрисовку DOM
+        setTimeout(() => {
+          this.initLightGallery(galleryEl)
+        })
+      }
+    });
+  }
 
+  private initLightGallery(galleryElement: HTMLDivElement): void {
+    this.lgInstance = lightGallery(galleryElement, {
+      plugins: [lgZoom],
+      licenseKey: '0000-0000-000-0000',
+      speed: 500,
+      download: false,
+      counter: false,
+      zoom: true,
+      selector: 'a',
+      showZoomInOutIcons: true,
+    });
   }
 
   public onClose(): void {

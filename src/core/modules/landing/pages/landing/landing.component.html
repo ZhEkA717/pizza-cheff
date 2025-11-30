@@ -1,4 +1,4 @@
-<div *transloco="let t; lang: 'ru'" class="landing">
+<div class="landing">
 
   <header class="header">
     <div class="container">
@@ -6,7 +6,7 @@
         <div class="header__logo__img">
           <img src="assets/images/landing/pizza-logo.webp" alt="pizza-logo">
         </div>
-        <a href="#" class="header__logo__title">{{ t('Logo') }}</a>
+        <a href="#" class="header__logo__title">{{ 'Logo' | transloco }}</a>
       </div>
       <nav class="header__nav">
         <div class="burger-menu">
@@ -29,10 +29,10 @@
           }
         </div>
         <ul>
-          <li><a (click)="scroll(pizza); onClose()">{{ t('Pizzas') }}</a></li>
-          <li><a href="#">{{ t('Drinks') }}</a></li>
-          <li><a (click)="scroll(placeOrder); onClose()">{{ t('Delivery-and-payment') }}</a></li>
-          <li><a href="#">{{ t('Contacts') }}</a></li>
+          <li><a (click)="scroll(pizza); onClose()">{{ 'Pizzas' | transloco }}</a></li>
+          <li><a href="#">{{ 'Drinks' | transloco }}</a></li>
+          <li><a (click)="scroll(placeOrder); onClose()">{{ 'Delivery-and-payment' | transloco }}</a></li>
+          <li><a href="#">{{ 'Contacts' | transloco }}</a></li>
         </ul>
         <tui-drawer
           *tuiPopup="open()"
@@ -42,10 +42,10 @@
           (click.self)="onClose()"
         >
           <ul>
-            <li><a (click)="scroll(pizza); onClose()">{{ t('Pizzas') }}</a></li>
-            <li><a href="#">{{ t('Drinks') }}</a></li>
-            <li><a (click)="scroll(placeOrder); onClose()">{{ t('Delivery-and-payment') }}</a></li>
-            <li><a href="#">{{ t('Contacts') }}</a></li>
+            <li><a (click)="scroll(pizza); onClose()">{{ 'Pizzas' | transloco }}</a></li>
+            <li><a href="#">{{ 'Drinks' | transloco }}</a></li>
+            <li><a (click)="scroll(placeOrder); onClose()">{{ 'Delivery-and-payment' | transloco }}</a></li>
+            <li><a href="#">{{ 'Contacts' | transloco }}</a></li>
           </ul>
         </tui-drawer>
       </nav>
@@ -57,8 +57,8 @@
       <section class="advertisement">
         <div class="advertisement__info">
           <div class="advertisement__info__title">
-            <p>{{ t('The-most-delicious-pizza-in-the-world') }}</p>
-            <p>{{ t('Only-at-Pizza-Chef') }}</p>
+            <p>{{ 'The-most-delicious-pizza-in-the-world' | transloco }}</p>
+            <p>{{ 'Only-at-Pizza-Chef' | transloco }}</p>
           </div>
           <div class="advertisement__info__img">
             <img src="assets/images/landing/pizza-big.webp" alt="pizza-big">
@@ -69,8 +69,8 @@
                 <img src="assets/images/landing/icon-ear.webp" alt="icon-ear">
               </div>
               <div class="info">
-                <div class="info__title">{{ t('The-best-dough') }}</div>
-                <div class="info__subtitle">{{ t('The-best-dough-subtitle') }}</div>
+                <div class="info__title">{{ 'The-best-dough' | transloco }}</div>
+                <div class="info__subtitle">{{ 'The-best-dough-subtitle' | transloco }}</div>
               </div>
             </div>
             <div class="advertisement__info__item">
@@ -78,8 +78,8 @@
                 <img src="assets/images/landing/icon-cap.webp" alt="icon-ear">
               </div>
               <div class="info">
-                <div class="info__title">{{ t('The-best-chefs') }}</div>
-                <div class="info__subtitle">{{ t('The-best-chefs-subtitle') }}</div>
+                <div class="info__title">{{ 'The-best-chefs' | transloco }}</div>
+                <div class="info__subtitle">{{ 'The-best-chefs-subtitle' | transloco }}</div>
               </div>
             </div>
             <div class="advertisement__info__item">
@@ -87,8 +87,8 @@
                 <img src="assets/images/landing/icon-okey.webp" alt="icon-ear">
               </div>
               <div class="info">
-                <div class="info__title">{{ t('Quality-assurance') }}</div>
-                <div class="info__subtitle">{{ t('Quality-assurance-subtitle') }}</div>
+                <div class="info__title">{{ 'Quality-assurance' | transloco }}</div>
+                <div class="info__subtitle">{{ 'Quality-assurance-subtitle' | transloco }}</div>
               </div>
             </div>
             <div class="advertisement__info__item">
@@ -96,13 +96,13 @@
                 <img src="assets/images/landing/icon-recipe.webp" alt="icon-ear">
               </div>
               <div class="info">
-                <div class="info__title">{{ t('Selected-recipes') }}</div>
-                <div class="info__subtitle">{{ t('Selected-recipes-subtitle') }}</div>
+                <div class="info__title">{{ 'Selected-recipes' | transloco }}</div>
+                <div class="info__subtitle">{{ 'Selected-recipes-subtitle' | transloco }}</div>
               </div>
             </div>
           </div>
           <div class="advertisement__info__button">
-            <lib-button (onClick)="scroll(pizza)" size="lg" [label]="t('Select-pizza')"></lib-button>
+            <lib-button (onClick)="scroll(pizza)" size="lg" [label]="'Select-pizza' | transloco"></lib-button>
           </div>
         </div>
         <div class="advertisement__img">
@@ -110,11 +110,16 @@
         </div>
       </section>
       <section #pizza id="pizzas" class="select-pizzas">
-        <div class="select-pizzas__title">{{ t('Choose-your-favorite-pizza') }}</div>
-        <div class="select-pizzas__items">
+        <div class="select-pizzas__title">{{ 'Choose-your-favorite-pizza' | transloco }}</div>
+        <div #lightgalleryContainer class="select-pizzas__items">
           @if (!skeleton()) {
             @for (card of cards(); track card.img) {
-              <app-pizza-card [card]="card"></app-pizza-card>
+              <a
+                [href]="card.img"
+                [attr.data-sub-html]="card.title"
+                class="gallery-item">
+                <app-pizza-card [card]="card"></app-pizza-card>
+              </a>
             }
 
           } @else {
@@ -127,18 +132,20 @@
       <section #placeOrder class="place-order">
         <div class="place-order__info">
           <div class="place-order__info__title">
-            <p>{{ t('Stop-thinking') }}!</p>
-            <p>{{ t('Stop-thinking-subtitle') }}!</p>
+            <p>{{ 'Stop-thinking' | transloco }}!</p>
+            <p>{{ 'Stop-thinking-subtitle' | transloco }}!</p>
           </div>
-          <div class="place-order__info__description">{{ t('Stop-thinking-description') }}!</div>
+          <div class="place-order__info__description">{{ 'Stop-thinking-description' | transloco }}!</div>
         </div>
         <div class="place-order__form" [formGroup]="form">
           <lib-input [color]="form.controls.name.invalid && !form.controls.name.untouched ? 'error' : 'primary'"
-                     [forbidDot]="true" formControlName="name" [placeholder]="t('Your-name')"
+                     [forbidDot]="true" formControlName="name" [placeholder]="'Your-name' | transloco"
           ></lib-input>
-          <lib-input [color]="form.controls.address.invalid && !form.controls.address.untouched ? 'error' : 'primary'"  formControlName="address" [placeholder]="t('Delivery-address')"></lib-input>
-          <lib-input [color]="form.controls.phone.invalid && !form.controls.phone.untouched ? 'error' : 'primary'"  type="tel" formControlName="phone" [placeholder]="t('Phone')"></lib-input>
-          <lib-button (onClick)="sendForm(success)" size="lg" [label]="t('Place-an-order')"></lib-button>
+          <lib-input [color]="form.controls.address.invalid && !form.controls.address.untouched ? 'error' : 'primary'"
+                     formControlName="address" [placeholder]="'Delivery-address' | transloco"></lib-input>
+          <lib-input [color]="form.controls.phone.invalid && !form.controls.phone.untouched ? 'error' : 'primary'"
+                     type="tel" formControlName="phone" [placeholder]="'Phone' | transloco"></lib-input>
+          <lib-button (onClick)="sendForm(success)" size="lg" [label]="'Place-an-order' | transloco"></lib-button>
           <ng-template #success let-observer>
             <div class="success-dialog">
               <p>Спасибо за заказ!</p>
