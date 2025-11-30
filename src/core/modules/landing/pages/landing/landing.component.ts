@@ -1,13 +1,14 @@
-import {ChangeDetectionStrategy, Component, DestroyRef, inject, signal} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, signal} from '@angular/core';
 import {Translation, TranslocoDirective, TranslocoService} from '@jsverse/transloco';
 import {GlobalLoadingService} from '@ui-kit/src/lib/global-loading/global-loading.service';
 import {Button} from '@ui-kit/src/lib/button/button';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {PizzaCard} from '@core/modules/landing/interfaces/landing.interfaces';
+import {PizzaCard, PlaceOrderForm} from '@core/modules/landing/interfaces/landing.interfaces';
 import {delay, finalize, of, switchMap, tap} from 'rxjs';
 import {PizzaCardComponent} from '@core/modules/landing/components/pizza-card/pizza-card.component';
 import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
+import {UiKitInput} from '@ui-kit/src/lib/input/input';
 
 @Component({
   selector: 'app-landing',
@@ -17,6 +18,8 @@ import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
     FormsModule,
     PizzaCardComponent,
     Skeleton,
+    UiKitInput,
+    ReactiveFormsModule,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
@@ -24,10 +27,16 @@ import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
   standalone: true
 })
 export class LandingComponent {
-  value = signal('adasd');
   private translocoService = inject(TranslocoService);
+  private globalLoadingService = inject(GlobalLoadingService);
   cards = signal<PizzaCard[] | null>(null);
+  private cdr = inject(ChangeDetectorRef);
   skeleton = signal(false);
+  form: PlaceOrderForm = new FormGroup({
+    name: new FormControl<string | null>(null, Validators.required),
+    address: new FormControl<string | null>(null, Validators.required),
+    phone: new FormControl<string | null>(null, Validators.required)
+  })
 
   constructor() {
     this.translocoService.selectTranslation().pipe(
@@ -100,5 +109,21 @@ export class LandingComponent {
     pizza.scrollIntoView({
       behavior: 'smooth'
     })
+  }
+
+  sendForm() {
+    if (!this.form.valid) return;
+    const loadingId = new Date().valueOf().toString();
+
+    this.globalLoadingService.show(loadingId);
+
+    const form = this.form.value;
+
+    setTimeout(() => {
+      this.globalLoadingService.hide(loadingId);
+      this.form.reset()
+      alert('Заказ успешно оформлен!')
+    }, 1000)
+
   }
 }

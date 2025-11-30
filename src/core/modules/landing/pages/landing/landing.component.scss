@@ -48,7 +48,11 @@
 
   }
 }
-
+main {
+  background-image: url('/assets/images/landing/pizza-piece-big.webp');
+  background-repeat: no-repeat;
+  background-position: right 220px bottom ;
+}
 .advertisement {
   padding-top: 128px;
   padding-bottom: 100px;
@@ -140,5 +144,56 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* две равные колонки */
     gap: 12px;
+  }
+}
+.place-order {
+  padding-top: 242px;
+  padding-bottom: 100px;
+  display: flex;
+  gap: 40px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    width: 410px;
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-family: "Arimo", sans-serif;
+      font-weight: 400;
+      font-size: 34px;
+      letter-spacing: 1px;
+
+
+      p:first-child {
+        color: var(--orange-60);
+      }
+
+      p:last-child {
+        letter-spacing: 0.5px;
+        color: var(--gray-orange-77);
+      }
+    }
+
+    &__description {
+      text-align: justify;
+      line-height: 23px;
+      font-size: 16px;
+      max-width: 384px;
+      color: var(--gray-orange-77);
+    }
+  }
+
+  &__form {
+    margin-top: 52px;
+    margin-left: 58px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 332px;
+    max-width: 332px;
   }
 }

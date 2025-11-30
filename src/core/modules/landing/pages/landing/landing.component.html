@@ -19,8 +19,9 @@
     </div>
   </header>
 
-  <div class="container">
-    <main>
+  <main>
+
+    <div class="container">
       <section class="advertisement">
         <div class="advertisement__info">
           <div class="advertisement__info__title">
@@ -88,8 +89,24 @@
           }
         </div>
       </section>
-    </main>
-  </div>
+      <section class="place-order">
+        <div class="place-order__info">
+          <div class="place-order__info__title">
+            <p>{{ t('Stop-thinking') }}!</p>
+            <p>{{ t('Stop-thinking-subtitle') }}!</p>
+          </div>
+          <div class="place-order__info__description">{{ t('Stop-thinking-description') }}!</div>
+        </div>
+        <div class="place-order__form" [formGroup]="form">
+          <lib-input formControlName="name" [placeholder]="t('Your-name')"></lib-input>
+          <lib-input formControlName="address" [placeholder]="t('Delivery-address')"></lib-input>
+          <lib-input formControlName="phone" [placeholder]="t('Phone')"></lib-input>
+          <lib-button (onClick)="sendForm()" size="lg" [label]="t('Place-an-order')"></lib-button>
+        </div>
+      </section>
+    </div>
+  </main>
+
 </div>
 
 

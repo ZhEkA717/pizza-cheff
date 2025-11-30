@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, input, signal} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
@@ -11,16 +11,16 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Input),
+      useExisting: forwardRef(() => UiKitInput),
       multi: true
     }
   ]
 })
-export class Input implements ControlValueAccessor {
+export class UiKitInput implements ControlValueAccessor {
   placeholder = input<string>('');
   type = input<string>('text');
 
-  value: string = '';
+  value = signal('');
   disabled = false;
 
   private onChange = (value: any) => {
@@ -30,7 +30,8 @@ export class Input implements ControlValueAccessor {
 
   // Когда Angular записывает значение в компонент
   writeValue(value: any): void {
-    this.value = value ?? '';
+    this.value.set(value ?? '');
+    this.onChange(this.value());
   }
 
   // Когда значение изменилось в UI
@@ -51,7 +52,7 @@ export class Input implements ControlValueAccessor {
   // При вводе текста
   onInput(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.value = target.value;
+    this.value.set(target.value);
     this.onChange(this.value);
   }
 }
