@@ -5,6 +5,8 @@ import {routes} from './app.routes';
 import {provideHttpClient, withFetch, withInterceptorsFromDi} from '@angular/common/http';
 import {provideTransloco} from '@jsverse/transloco';
 import {TranslocoHttpLoader} from '@app/transloco-loader';
+import {provideEventPlugins} from '@taiga-ui/event-plugins';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,6 +20,8 @@ export const appConfig: ApplicationConfig = {
         prodMode: !isDevMode()
       },
       loader: TranslocoHttpLoader
-    })
+    }),
+    provideAnimations(),
+    provideEventPlugins(),
   ]
 };

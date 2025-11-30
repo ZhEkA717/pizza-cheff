@@ -11,6 +11,7 @@ import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
 import {UiKitInput} from '@ui-kit/src/lib/input/input';
 import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
 import {NgTemplateOutlet} from '@angular/common';
+import {TuiDialogService} from '@taiga-ui/core';
 
 @Component({
   selector: 'app-landing',
@@ -33,6 +34,8 @@ import {NgTemplateOutlet} from '@angular/common';
 export class LandingComponent {
   private translocoService = inject(TranslocoService);
   private globalLoadingService = inject(GlobalLoadingService);
+  private readonly dialogs = inject(TuiDialogService);
+
   cards = signal<PizzaCard[] | null>(null);
   private cdr = inject(ChangeDetectorRef);
   skeleton = signal(false);
@@ -126,8 +129,18 @@ export class LandingComponent {
     setTimeout(() => {
       this.globalLoadingService.hide(loadingId);
       this.form.reset()
-      alert('Заказ успешно оформлен!')
+      this.showDialogWithCustomButton();
     }, 1000)
 
+  }
+  protected showDialogWithCustomButton(): void {
+    this.dialogs
+      .open('Заказ будет готов в течение 30 минут.', {
+        label: 'Спасибо за заказ!',
+        size: 'm',
+        data: {button: 'Хорошо'},
+        closeable: false
+      })
+      .subscribe();
   }
 }
