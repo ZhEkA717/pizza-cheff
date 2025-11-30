@@ -115,7 +115,7 @@
           @if (!skeleton()) {
             @for (card of cards(); track card.img) {
               <a
-                [href]="card.img"
+                [href]="card.imgFull"
                 [attr.data-sub-html]="card.title"
                 class="gallery-item">
                 <app-pizza-card [card]="card"></app-pizza-card>

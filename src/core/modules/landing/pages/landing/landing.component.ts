@@ -22,7 +22,6 @@ import {LightGallery} from 'lightgallery/lightgallery';
 @Component({
   selector: 'app-landing',
   imports: [
-    TranslocoDirective,
     Button,
     FormsModule,
     PizzaCardComponent,
@@ -33,8 +32,6 @@ import {LightGallery} from 'lightgallery/lightgallery';
     TuiDrawer,
     TuiPopup,
     TuiInputRange,
-    JsonPipe,
-    TuiTooltip,
     TranslocoPipe,
   ],
   templateUrl: './landing.component.html',
@@ -67,12 +64,8 @@ export class LandingComponent {
     })
     effect(() => {
       const galleryEl = this.galleryContainer()?.nativeElement;
-      // Если карточки загружены и галерея еще не создана
       if (galleryEl && this.cards() && !this.lgInstance) {
-        // Даем Angular один тик на отрисовку DOM
-        setTimeout(() => {
-          this.initLightGallery(galleryEl)
-        })
+        setTimeout(() => this.initLightGallery(galleryEl))
       }
     });
   }
@@ -98,48 +91,56 @@ export class LandingComponent {
     const data: PizzaCard[] = [
       {
         img: 'assets/images/landing/pizza-meat-deluxe.webp',
+        imgFull: 'assets/images/landing/1.png',
         title: trl['Meat-Deluxe'],
         subtitle: trl['Meat-Deluxe-subtitle'],
         alt: 'pizza-meat-deluxe'
       },
       {
         img: 'assets/images/landing/pizza-marine-premium.webp',
+        imgFull: 'assets/images/landing/2.png',
         title: trl['Marine-premium'],
         subtitle: trl['Marine-premium-subtitle'],
         alt: 'pizza-marine-premium'
       },
       {
         img: 'assets/images/landing/pizza-bekon-sausages.webp',
+        imgFull: 'assets/images/landing/3.png',
         title: trl['Bacon-and-sausages'],
         subtitle: trl['Bacon-and-sausages-subtitle'],
         alt: 'pizza-bekon-sausages'
       },
       {
         img: 'assets/images/landing/pizza-chicken-deluxe.webp',
+        imgFull: 'assets/images/landing/4.png',
         title: trl['Chicken-deluxe'],
         subtitle: trl['Chicken-deluxe-subtitle'],
         alt: 'pizza-chicken-deluxe'
       },
       {
         img: 'assets/images/landing/pizza-bbq-premium.webp',
+        imgFull: 'assets/images/landing/5.png',
         title: trl['Bbq-premium'],
         subtitle: trl['Bbq-premium-subtitle'],
         alt: 'pizza-bbq-premium'
       },
       {
         img: 'assets/images/landing/pizza-pepperoni-double.webp',
+        imgFull: 'assets/images/landing/6.png',
         title: trl['Pepperoni-double'],
         subtitle: trl['Pepperoni-double-subtitle'],
         alt: 'pizza-pepperoni-double'
       },
       {
         img: 'assets/images/landing/pizza-chicken-trio.webp',
+        imgFull: 'assets/images/landing/7.png',
         title: trl['Chicken-trio'],
         subtitle: trl['Chicken-trio-subtitle'],
         alt: 'pizza-chicken-trio'
       },
       {
         img: 'assets/images/landing/pizza-cheese.webp',
+        imgFull: 'assets/images/landing/8.png',
         title: trl['Cheese'],
         subtitle: trl['Cheese-subtitle'],
         alt: 'pizza-cheese'

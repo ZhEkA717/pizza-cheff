@@ -2,6 +2,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 export interface PizzaCard {
   img: string;
+  imgFull: string;
   title: string;
   subtitle: string;
   alt: string;
