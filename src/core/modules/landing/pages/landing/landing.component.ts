@@ -1,34 +1,17 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  DestroyRef,
-  inject,
-  signal,
-  ViewChild
-} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal} from '@angular/core';
 import {Translation, TranslocoDirective, TranslocoService} from '@jsverse/transloco';
 import {GlobalLoadingService} from '@ui-kit/src/lib/global-loading/global-loading.service';
 import {Button} from '@ui-kit/src/lib/button/button';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PizzaCard, PlaceOrderForm} from '@core/modules/landing/interfaces/landing.interfaces';
-import {delay, filter, finalize, of, switchMap, tap} from 'rxjs';
+import {delay, finalize, of, switchMap, tap} from 'rxjs';
 import {PizzaCardComponent} from '@core/modules/landing/components/pizza-card/pizza-card.component';
 import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
 import {UiKitInput} from '@ui-kit/src/lib/input/input';
 import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
-import {NgTemplateOutlet} from '@angular/common';
-import {
-  TuiButton, TuiDialogComponent, TuiDialogContext,
-  TuiDialogService,
-  TuiPopup,
-  TuiTextfieldComponent,
-  TuiTextfieldDirective,
-  TuiTitle
-} from '@taiga-ui/core';
-import {TUI_CONFIRM, TuiDrawer, TuiInputRange} from '@taiga-ui/kit';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiDialogService, TuiPopup} from '@taiga-ui/core';
+import {TuiDrawer, TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-landing',
@@ -41,16 +24,9 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
     UiKitInput,
     ReactiveFormsModule,
     ForbidDotDirective,
-    NgTemplateOutlet,
-    TuiButton,
     TuiDrawer,
     TuiPopup,
-    TuiTitle,
-    TuiTextfieldComponent,
-    TuiInputRange,
-    TuiTextfieldDirective,
-    TuiRepeatTimes,
-    TuiDialogComponent,
+    TuiInputRange
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',

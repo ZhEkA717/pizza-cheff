@@ -8,7 +8,7 @@ import {NgClass, NgStyle} from '@angular/common';
     NgStyle
   ],
   templateUrl: './skeleton.html',
-  styleUrl: './skeleton.css',
+  styleUrl: './skeleton.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
