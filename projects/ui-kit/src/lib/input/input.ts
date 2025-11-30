@@ -1,6 +1,10 @@
-import {ChangeDetectionStrategy, Component, forwardRef, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, forwardRef, input, Signal, signal} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
+import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
+import metadata from 'libphonenumber-js/min/metadata';
+import {MaskitoOptions} from '@maskito/core';
+import {MaskitoDirective} from '@maskito/angular';
 
 @Component({
   selector: 'lib-input',
@@ -10,6 +14,7 @@ import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ForbidDotDirective,
+    MaskitoDirective,
   ],
   providers: [
     {
@@ -22,7 +27,16 @@ import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
 export class UiKitInput implements ControlValueAccessor {
   forbidDot = input(false);
   placeholder = input<string>('');
-  type = input<string>('text');
+  type = input<'text' | 'tel'>('text');
+  private readonly phoneMask = maskitoPhoneOptionsGenerator({
+    countryIsoCode: 'BY',
+    metadata,
+  });
+  readonly maskOptions: Signal<MaskitoOptions | null> = computed(() =>
+    this.type() === 'tel' ? this.phoneMask : null
+  );
+  color = input<'success' | 'error' | 'primary'>('primary')
+
 
   value = signal('');
   disabled = false;

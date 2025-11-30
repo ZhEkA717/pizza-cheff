@@ -10,8 +10,11 @@ import {PizzaCardComponent} from '@core/modules/landing/components/pizza-card/pi
 import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
 import {UiKitInput} from '@ui-kit/src/lib/input/input';
 import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
-import {TuiDialogService, TuiPopup} from '@taiga-ui/core';
-import {TuiDrawer, TuiInputRange} from '@taiga-ui/kit';
+import {TuiDialogContext, TuiDialogService, TuiPopup} from '@taiga-ui/core';
+import {TuiDrawer, TuiInputRange, TuiTooltip} from '@taiga-ui/kit';
+import {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {phoneValidator} from '@shared/validators/phoneValidator';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-landing',
@@ -26,7 +29,9 @@ import {TuiDrawer, TuiInputRange} from '@taiga-ui/kit';
     ForbidDotDirective,
     TuiDrawer,
     TuiPopup,
-    TuiInputRange
+    TuiInputRange,
+    JsonPipe,
+    TuiTooltip,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
@@ -44,8 +49,8 @@ export class LandingComponent {
   skeleton = signal(false);
   form: PlaceOrderForm = new FormGroup({
     name: new FormControl<string | null>(null, Validators.required),
-    address: new FormControl<string | null>(null, Validators.required),
-    phone: new FormControl<string | null>(null, Validators.required)
+    address: new FormControl<string | null>(null, [Validators.required]),
+    phone: new FormControl<string | null>(null, [Validators.required, phoneValidator('BY')])
   })
 
   constructor() {
@@ -55,6 +60,7 @@ export class LandingComponent {
     ).subscribe(cards => {
       this.cards.set(cards);
     })
+
   }
 
   public onClose(): void {
@@ -125,30 +131,28 @@ export class LandingComponent {
     })
   }
 
-  sendForm() {
+  sendForm(content: PolymorpheusContent<TuiDialogContext>) {
+    const {name, address, phone} = this.form.controls;
+    name.markAsTouched();
+    address.markAsTouched();
+    phone.markAsTouched();
+
     if (!this.form.valid) return;
     const loadingId = new Date().valueOf().toString();
 
     this.globalLoadingService.show(loadingId);
 
-    const form = this.form.value;
-
     setTimeout(() => {
       this.globalLoadingService.hide(loadingId);
       this.form.reset()
-      this.showDialogWithCustomButton();
+      this.showDialogWithCustomButton(content);
     }, 1000)
 
   }
 
-  protected showDialogWithCustomButton(): void {
-    this.dialogs
-      .open('Заказ будет готов в течение 30 минут.', {
-        label: 'Спасибо за заказ!',
-        size: 'm',
-        data: {button: 'Хорошо'},
-        closeable: false
-      })
-      .subscribe();
+  protected showDialogWithCustomButton(content: PolymorpheusContent<TuiDialogContext>): void {
+    this.dialogs.open(content, {
+      closeable: false
+    }).subscribe();
   }
 }

@@ -133,10 +133,20 @@
           <div class="place-order__info__description">{{ t('Stop-thinking-description') }}!</div>
         </div>
         <div class="place-order__form" [formGroup]="form">
-          <lib-input [forbidDot]="true" formControlName="name" [placeholder]="t('Your-name')"></lib-input>
-          <lib-input formControlName="address" [placeholder]="t('Delivery-address')"></lib-input>
-          <lib-input formControlName="phone" [placeholder]="t('Phone')"></lib-input>
-          <lib-button (onClick)="sendForm()" size="lg" [label]="t('Place-an-order')"></lib-button>
+          <lib-input [color]="form.controls.name.invalid && !form.controls.name.untouched ? 'error' : 'primary'"
+                     [forbidDot]="true" formControlName="name" [placeholder]="t('Your-name')"
+          ></lib-input>
+          <lib-input [color]="form.controls.address.invalid && !form.controls.address.untouched ? 'error' : 'primary'"  formControlName="address" [placeholder]="t('Delivery-address')"></lib-input>
+          <lib-input [color]="form.controls.phone.invalid && !form.controls.phone.untouched ? 'error' : 'primary'"  type="tel" formControlName="phone" [placeholder]="t('Phone')"></lib-input>
+          <lib-button (onClick)="sendForm(success)" size="lg" [label]="t('Place-an-order')"></lib-button>
+          <ng-template #success let-observer>
+            <div class="success-dialog">
+              <p>Спасибо за заказ!</p>
+              <div class="success-dialog__close">
+                <lib-button label="Хорошо" (onClick)="observer.complete()" size="lg"></lib-button>
+              </div>
+            </div>
+          </ng-template>
         </div>
       </section>
     </div>

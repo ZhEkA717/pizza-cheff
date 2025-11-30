@@ -433,3 +433,16 @@ main {
   color: white;
   font-weight: 600;
 }
+
+
+::ng-deep .success-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  p {
+    font-size: 35px;
+    font-weight: 800;
+    color: var(--dark-brown);
+  }
+}

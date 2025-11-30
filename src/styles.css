@@ -22,6 +22,12 @@
   --white-opacity_74: #FFFFFFBD;
 
   --spinner-background-color: rgba(0, 0, 0, 0.2);
+
+  --success-color: #28a745;
+  --success-focus-color: #1e7e34;
+
+  --error-color: #dc3545;
+  --error-focus-color: #c82333;
 }
 
 @font-face {
