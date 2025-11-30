@@ -149,6 +149,19 @@ main {
         font-size: 35px;
       }
 
+      @media(max-width: 610px) {
+        font-size: 30px;
+        line-height: 35px;
+      }
+
+      @media(max-width: 476px) {
+        font-size: 25px;
+      }
+
+      @media(max-width: 476px) {
+        font-size: 20px;
+      }
+
       p:first-child {
         color: var(--gray-orange-77);
       }
@@ -214,6 +227,10 @@ main {
           @media(max-width: 720px) {
             font-size: 14px;
           }
+
+          @media(max-width: 610px) {
+            font-size: 12px;
+          }
         }
 
         &__subtitle {
@@ -222,6 +239,9 @@ main {
           letter-spacing: 0.7px;
           @media(max-width: 720px) {
             font-size: 12px;
+          }
+          @media(max-width: 610px) {
+            font-size: 10px;
           }
         }
 
@@ -271,6 +291,14 @@ main {
 
     @media(max-width: 720px) {
       font-size: 30px;
+    }
+
+    @media(max-width: 610px) {
+      font-size: 25px;
+    }
+
+    @media(max-width: 445px) {
+      font-size: 20px;
     }
   }
 
@@ -373,4 +401,35 @@ main {
       max-width: none;
     }
   }
+}
+
+.drawer {
+  top: 0;
+  border-radius: 0;
+  inline-size: 20rem;
+}
+
+.header {
+  position: sticky;
+}
+.drawer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drawer ul li a {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gray-orange-77);
+}
+
+.my-ok-btn {
+  background: var(--bed-rest-orange);
+  color: white;
+  font-weight: 600;
 }

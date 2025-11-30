@@ -10,17 +10,44 @@
       </div>
       <nav class="header__nav">
         <div class="burger-menu">
-
+          @if (!open()) {
+            <svg (click)="open.set(true)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-menu-icon lucide-menu">
+              <path d="M4 5h16"/>
+              <path d="M4 12h16"/>
+              <path d="M4 19h16"/>
+            </svg>
+          } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-x-icon lucide-x">
+              <path d="M18 6 6 18"/>
+              <path d="m6 6 12 12"/>
+            </svg>
+          }
         </div>
-        <ng-container *ngTemplateOutlet="menuList"></ng-container>
-        <ng-template #menuList>
+        <ul>
+          <li><a (click)="scroll(pizza); onClose()">{{ t('Pizzas') }}</a></li>
+          <li><a href="#">{{ t('Drinks') }}</a></li>
+          <li><a (click)="scroll(placeOrder); onClose()">{{ t('Delivery-and-payment') }}</a></li>
+          <li><a href="#">{{ t('Contacts') }}</a></li>
+        </ul>
+        <tui-drawer
+          *tuiPopup="open()"
+          direction="left"
+          class="drawer"
+          [overlay]="true"
+          (click.self)="onClose()"
+        >
           <ul>
-            <li><a (click)="scroll(pizza)">{{ t('Pizzas') }}</a></li>
+            <li><a (click)="scroll(pizza); onClose()">{{ t('Pizzas') }}</a></li>
             <li><a href="#">{{ t('Drinks') }}</a></li>
-            <li><a (click)="scroll(placeOrder)">{{ t('Delivery-and-payment') }}</a></li>
+            <li><a (click)="scroll(placeOrder); onClose()">{{ t('Delivery-and-payment') }}</a></li>
             <li><a href="#">{{ t('Contacts') }}</a></li>
           </ul>
-        </ng-template>
+        </tui-drawer>
       </nav>
     </div>
   </header>
