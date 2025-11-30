@@ -1,10 +1,23 @@
 <div class="ui-kit-input">
-  <input
-    [type]="type()"
-    [placeholder]="placeholder()"
-    [disabled]="disabled"
-    [value]="value()"
-    (input)="onInput($event)"
-    (blur)="onTouched()"
-  >
+  @if (forbidDot()) {
+    <input
+      forbidDot
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled"
+      [value]="value()"
+      (input)="onInput($event)"
+      (blur)="onTouched()"
+    >
+  } @else {
+    <input
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled"
+      [value]="value()"
+      (input)="onInput($event)"
+      (blur)="onTouched()"
+    >
+  }
+
 </div>

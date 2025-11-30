@@ -22,9 +22,7 @@
       "@app/*": [
         "src/app/*"
       ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
+      "@shared/*": ["src/shared/*"],
       "@assets/*": [
         "src/assets/*"
       ],

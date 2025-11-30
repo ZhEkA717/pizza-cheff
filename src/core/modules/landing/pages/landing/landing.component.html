@@ -12,7 +12,7 @@
         <ul>
           <li><a (click)="scroll(pizza)">{{ t('Pizzas') }}</a></li>
           <li><a href="#">{{ t('Drinks') }}</a></li>
-          <li><a href="#">{{ t('Delivery-and-payment') }}</a></li>
+          <li><a (click)="scroll(placeOrder)">{{ t('Delivery-and-payment') }}</a></li>
           <li><a href="#">{{ t('Contacts') }}</a></li>
         </ul>
       </nav>
@@ -89,7 +89,7 @@
           }
         </div>
       </section>
-      <section class="place-order">
+      <section #placeOrder class="place-order">
         <div class="place-order__info">
           <div class="place-order__info__title">
             <p>{{ t('Stop-thinking') }}!</p>
@@ -98,7 +98,7 @@
           <div class="place-order__info__description">{{ t('Stop-thinking-description') }}!</div>
         </div>
         <div class="place-order__form" [formGroup]="form">
-          <lib-input formControlName="name" [placeholder]="t('Your-name')"></lib-input>
+          <lib-input [forbidDot]="true" formControlName="name" [placeholder]="t('Your-name')"></lib-input>
           <lib-input formControlName="address" [placeholder]="t('Delivery-address')"></lib-input>
           <lib-input formControlName="phone" [placeholder]="t('Phone')"></lib-input>
           <lib-button (onClick)="sendForm()" size="lg" [label]="t('Place-an-order')"></lib-button>

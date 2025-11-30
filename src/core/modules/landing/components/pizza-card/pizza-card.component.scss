@@ -9,9 +9,8 @@
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 4px;
-  box-shadow:
-    0 4px 10px rgba(0, 0, 0, 0.06),   /* мягкая основная */
-    0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 15px 0 #98989833;
+
 
   &__img {
     min-width: 214px;
@@ -25,16 +24,22 @@
 
   &__title {
     color: var(--dark-brown);
-    font-family: "Arimo", sans-serif;
-    font-weight: 400;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -2.73%;
+
+    text-align: center;
+
   }
 
   &__subtitle {
-    color: var(--dark-gray-60);
-    font-size: 14px;
-    font-family: "Arimo", sans-serif;
-    font-weight: 400;
     width: 244px;
+    color: var(--dark-gray-60);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0;
     text-align: center;
   }
 

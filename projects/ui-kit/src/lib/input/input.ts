@@ -1,13 +1,16 @@
 import {ChangeDetectionStrategy, Component, forwardRef, input, signal} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
 
 @Component({
   selector: 'lib-input',
-  imports: [],
   templateUrl: './input.html',
   styleUrl: './input.scss',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ForbidDotDirective,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,6 +20,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   ]
 })
 export class UiKitInput implements ControlValueAccessor {
+  forbidDot = input(false);
   placeholder = input<string>('');
   type = input<string>('text');
 
@@ -52,7 +56,10 @@ export class UiKitInput implements ControlValueAccessor {
   // При вводе текста
   onInput(event: Event) {
     const target = event.target as HTMLInputElement;
+    let val = target.value;
+
+
     this.value.set(target.value);
-    this.onChange(this.value);
+    this.onChange(this.value());
   }
 }

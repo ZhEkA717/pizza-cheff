@@ -9,6 +9,7 @@ import {delay, finalize, of, switchMap, tap} from 'rxjs';
 import {PizzaCardComponent} from '@core/modules/landing/components/pizza-card/pizza-card.component';
 import {Skeleton} from '@ui-kit/src/lib/skeleton/skeleton';
 import {UiKitInput} from '@ui-kit/src/lib/input/input';
+import {ForbidDotDirective} from '@shared/directives/forbid-dot.directive';
 
 @Component({
   selector: 'app-landing',
@@ -20,6 +21,7 @@ import {UiKitInput} from '@ui-kit/src/lib/input/input';
     Skeleton,
     UiKitInput,
     ReactiveFormsModule,
+    ForbidDotDirective,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
