@@ -1,7 +1,14 @@
 @if (card(); as card) {
   <div *transloco="let t; lang: 'ru'" class="pizza-card">
     <div class="pizza-card__img">
-      <img [src]="card.img" [alt]="card.alt">
+      <a
+        [href]="card.imgFull"
+        [attr.data-sub-html]="card.title"
+        class="gallery-item"
+      >
+        <img [src]="card.img" [alt]="card.alt">
+      </a>
+
     </div>
     <div class="pizza-card__title">{{ card.title }}</div>
     <div class="pizza-card__subtitle">{{ card.subtitle }}</div>

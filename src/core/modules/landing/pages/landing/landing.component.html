@@ -114,12 +114,7 @@
         <div #lightgalleryContainer class="select-pizzas__items">
           @if (!skeleton()) {
             @for (card of cards(); track card.img) {
-              <a
-                [href]="card.imgFull"
-                [attr.data-sub-html]="card.title"
-                class="gallery-item">
-                <app-pizza-card [card]="card"></app-pizza-card>
-              </a>
+              <app-pizza-card [card]="card"></app-pizza-card>
             }
 
           } @else {
